@@ -1,6 +1,7 @@
 // ========== LOADER: typing + progress ==========
 const loader = document.getElementById('loader');
 const typingEl = document.getElementById('typing');
+const progressEl = document.querySelector('#loader .progress');
 
 const bootLines = [
     '> Initializing system...',
@@ -10,11 +11,20 @@ const bootLines = [
     '> Access granted. Welcome, Epiphany.'
 ];
 
+const totalChars = bootLines.join('').length;
 let line = 0;
 let char = 0;
+let typed = 0;
+
+function updateProgress() {
+    if (!progressEl) return;
+    const pct = Math.min(100, Math.round((typed / totalChars) * 100));
+    progressEl.style.width = pct + '%';
+}
 
 function typeLine() {
     if (line >= bootLines.length) {
+        updateProgress();
         finishBoot();
         return;
     }
@@ -22,6 +32,8 @@ function typeLine() {
     if (char <= current.length) {
         typingEl.textContent = current.slice(0, char);
         char++;
+        typed++;
+        updateProgress();
         setTimeout(typeLine, 28);
     } else {
         char = 0;
