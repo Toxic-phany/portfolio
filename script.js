@@ -57,68 +57,66 @@ window.addEventListener('load', () => {
     setTimeout(finishBoot, 4500);
 });
 
-// ========== MOBILE MENU ==========
-const menuToggle = document.getElementById('menuToggle');
-const nav = document.getElementById('mainNav');
+// ========== VIEW NAVIGATION ==========
+const views = document.querySelectorAll('.view');
+const tiles = document.querySelectorAll('.tile');
+const backBtn = document.getElementById('backBtn');
+const crumb = document.getElementById('crumb');
 
-if (menuToggle && nav) {
-    menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('open');
+function showView(id) {
+    views.forEach(v => v.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (backBtn) backBtn.classList.add('show');
+    if (crumb) {
+        crumb.textContent = id.replace('view-', '').toUpperCase() + ' MODULE';
+    }
+    if (id === 'view-home') {
+        if (backBtn) backBtn.classList.remove('show');
+        if (crumb) crumb.textContent = '';
+    }
+    animateBars();
+    animateReveals();
+}
+
+tiles.forEach(tile => {
+    tile.addEventListener('click', () => {
+        const target = tile.getAttribute('data-view');
+        if (target) showView(target);
     });
-    nav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => nav.classList.remove('open'));
+});
+
+if (backBtn) {
+    backBtn.addEventListener('click', () => showView('view-home'));
+}
+
+// ========== SKILL BARS ==========
+function animateBars() {
+    const bars = document.querySelectorAll('.view.active .bar span');
+    bars.forEach(bar => {
+        const width = bar.getAttribute('data-width') || '0';
+        requestAnimationFrame(() => {
+            bar.style.width = width;
+        });
     });
 }
 
-// ========== SCROLLSPY: highlight active menu item ==========
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('#mainNav a');
-
-function setActive() {
-    let index = sections.length - 1;
-    while (index >= 0 && window.scrollY < sections[index].offsetTop - 120) {
-        index--;
-    }
-    navLinks.forEach(link => link.classList.remove('active'));
-    if (index >= 0) {
-        const id = sections[index].getAttribute('id');
-        const active = document.querySelector(`#mainNav a[href="#${id}"]`);
-        if (active) active.classList.add('active');
-    }
+// ========== REVEAL ==========
+function animateReveals() {
+    const els = document.querySelectorAll('.view.active .card, .view.active .member, .view.active .box');
+    els.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            el.style.transition = 'opacity .5s ease, transform .5s ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, 100 + i * 80);
+    });
 }
-
-window.addEventListener('scroll', setActive, { passive: true });
-window.addEventListener('resize', setActive);
-setActive();
-
-// ========== SKILL BARS: animate when visible ==========
-const skillBars = document.querySelectorAll('.bar span');
-
-const barObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const width = entry.target.getAttribute('data-width') || '0';
-            entry.target.style.width = width;
-            barObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.4 });
-
-skillBars.forEach(bar => barObserver.observe(bar));
-
-// ========== SCROLL REVEAL ==========
-const revealEls = document.querySelectorAll('.reveal');
-
-const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
-
-revealEls.forEach(el => revealObserver.observe(el));
 
 // ========== YEAR ==========
 const yearEl = document.getElementById('year');

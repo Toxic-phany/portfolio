@@ -28,218 +28,260 @@
     </div>
 
     <!-- ==================== -->
-    <!-- TOPBAR / NAV -->
+    <!-- TOPBAR -->
     <!-- ==================== -->
     <header class="topbar">
+        <button class="back-btn" id="backBtn">&#8592; MENU</button>
         <a href="#home" class="logo">root@Phany<span>~$</span></a>
-        <nav class="main-nav" id="mainNav">
-            <a href="#home">Home</a>
-            <a href="#welcome">Welcome</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#team">Crew</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        <span class="crumb" id="crumb"></span>
     </header>
 
-    <!-- ==================== -->
-    <!-- HERO -->
-    <!-- ==================== -->
-    <section id="home" class="hero">
-        <div class="hud tl"></div>
-        <div class="hud tr"></div>
-        <div class="hud bl"></div>
-        <div class="hud br"></div>
+    <main class="app">
 
-        <div class="hero-content">
-            <h1 class="glow">root@Phany:~$</h1>
-            <h2 class="portfolio-title">PORTFOLIO</h2>
-            <p class="subtitle">Cyber Security | Web Developer | Designer</p>
-            <a href="#welcome" class="start-btn">ENTER SYSTEM</a>
-        </div>
-    </section>
+        <!-- ==================== -->
+        <!-- HUB: HOME / MENU GRID -->
+        <!-- ==================== -->
+        <section id="view-home" class="view active">
+            <div class="hub">
+                <div class="hub-head">
+                    <p class="kicker">// access.granted</p>
+                    <h1 class="hub-title">PORTFOLIO</h1>
+                    <p class="hub-sub">Select a module to enter</p>
+                </div>
 
-    <!-- ==================== -->
-    <!-- WELCOME -->
-    <!-- ==================== -->
-    <section id="welcome" class="section welcome">
-        <div class="panel reveal">
-            <div class="panel-border"></div>
-            <p class="section-tag">// system.intro</p>
-            <h1>WELCOME</h1>
-            <p class="lead">Hello... My name is <strong>Epiphany</strong>.</p>
-            <p>Welcome to my Cyber Portfolio Presentation. This portfolio demonstrates my skills in HTML, CSS and JavaScript.</p>
-            <div class="line"></div>
-            <div class="info-grid">
-                <div class="box">
-                    <h3>Name</h3>
-                    <p>Epiphany Nestory</p>
-                </div>
-                <div class="box">
-                    <h3>Course</h3>
-                    <p>Information Technology</p>
-                </div>
-                <div class="box">
-                    <h3>Country</h3>
-                    <p>Tanzania</p>
-                </div>
-                <div class="box">
-                    <h3>Status</h3>
-                    <p>Student Developer</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==================== -->
-    <!-- ABOUT -->
-    <!-- ==================== -->
-    <section id="about" class="section about">
-        <div class="content reveal">
-            <p class="section-tag">// whoami</p>
-            <h2>ABOUT ME</h2>
-            <p>
-                My name is <b>Epiphany</b>. I am passionate about Web Development,
-                Cyber Security and Technology. I enjoy building modern websites
-                using HTML, CSS and JavaScript.
-            </p>
-            <div class="about-stats">
-                <div class="stat">
-                    <h3 data-count="95">0</h3>
-                    <p>PASSION</p>
-                </div>
-                <div class="stat">
-                    <h3 data-count="85">0</h3>
-                    <p>CREATIVITY</p>
-                </div>
-                <div class="stat">
-                    <h3 data-count="90">0</h3>
-                    <p>COMMITMENT</p>
+                <div class="menu-grid">
+                    <button class="tile" data-view="view-welcome" style="--i:1">
+                        <span class="tile-no">01</span>
+                        <span class="tile-ico">&#128075;</span>
+                        <h3>WELCOME</h3>
+                        <p>Introduction &amp; details</p>
+                    </button>
+                    <button class="tile" data-view="view-about" style="--i:2">
+                        <span class="tile-no">02</span>
+                        <span class="tile-ico">&#128100;</span>
+                        <h3>ABOUT</h3>
+                        <p>Who I am &amp; my story</p>
+                    </button>
+                    <button class="tile" data-view="view-skills" style="--i:3">
+                        <span class="tile-no">03</span>
+                        <span class="tile-ico">&#9881;</span>
+                        <h3>SKILLS</h3>
+                        <p>My capabilities</p>
+                    </button>
+                    <button class="tile" data-view="view-projects" style="--i:4">
+                        <span class="tile-no">04</span>
+                        <span class="tile-ico">&#128187;</span>
+                        <h3>PROJECTS</h3>
+                        <p>Work &amp; experiments</p>
+                    </button>
+                    <button class="tile" data-view="view-team" style="--i:5">
+                        <span class="tile-no">05</span>
+                        <span class="tile-ico">&#129309;</span>
+                        <h3>CREW</h3>
+                        <p>The team around me</p>
+                    </button>
+                    <button class="tile" data-view="view-contact" style="--i:6">
+                        <span class="tile-no">06</span>
+                        <span class="tile-ico">&#9993;</span>
+                        <h3>CONTACT</h3>
+                        <p>Reach out to me</p>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== -->
-    <!-- SKILLS -->
-    <!-- ==================== -->
-    <section id="skills" class="section skills">
-        <div class="content reveal">
-            <p class="section-tag">// capabilities</p>
-            <h2>MY SKILLS</h2>
-
-            <div class="skill">
-                <div class="skill-head"><span>HTML</span><em>95%</em></div>
-                <div class="bar"><span data-width="95%"></span></div>
+        <!-- ==================== -->
+        <!-- PAGE: WELCOME -->
+        <!-- ==================== -->
+        <section id="view-welcome" class="view">
+            <div class="page-head">
+                <span class="page-no">01</span>
+                <h2>WELCOME</h2>
             </div>
-
-            <div class="skill">
-                <div class="skill-head"><span>CSS</span><em>85%</em></div>
-                <div class="bar"><span data-width="85%"></span></div>
+            <div class="split">
+                <div class="split-media">
+                    <img src="pink.jfif" alt="Girl with pink hair at laptop">
+                </div>
+                <div class="split-text">
+                    <p class="kicker">// system.intro</p>
+                    <h3>Epiphany Nestory</h3>
+                    <p>Hello... My name is <strong>Epiphany</strong>. Welcome to my Cyber Portfolio Presentation. This portfolio demonstrates my skills in HTML, CSS and JavaScript.</p>
+                    <div class="line"></div>
+                    <div class="info-grid">
+                        <div class="box"><h3>Name</h3><p>Epiphany Nestory</p></div>
+                        <div class="box"><h3>Course</h3><p>Information Technology</p></div>
+                        <div class="box"><h3>Country</h3><p>Tanzania</p></div>
+                        <div class="box"><h3>Status</h3><p>Student Developer</p></div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="skill">
-                <div class="skill-head"><span>JavaScript</span><em>80%</em></div>
-                <div class="bar"><span data-width="80%"></span></div>
+        <!-- ==================== -->
+        <!-- PAGE: ABOUT -->
+        <!-- ==================== -->
+        <section id="view-about" class="view">
+            <div class="page-head">
+                <span class="page-no">02</span>
+                <h2>ABOUT</h2>
             </div>
-
-            <div class="skill">
-                <div class="skill-head"><span>Cyber Security</span><em>75%</em></div>
-                <div class="bar"><span data-width="75%"></span></div>
+            <div class="split reverse">
+                <div class="split-media">
+                    <img src="create.jfif" alt="Create">
+                </div>
+                <div class="split-text">
+                    <p class="kicker">// whoami</p>
+                    <h3>Passionate Builder</h3>
+                    <p>My name is <strong>Epiphany</strong>. I am passionate about Web Development, Cyber Security and Technology. I enjoy building modern websites using HTML, CSS and JavaScript.</p>
+                    <div class="line"></div>
+                    <div class="about-stats">
+                        <div class="stat"><h3>95</h3><p>PASSION</p></div>
+                        <div class="stat"><h3>85</h3><p>CREATIVITY</p></div>
+                        <div class="stat"><h3>90</h3><p>COMMITMENT</p></div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="facts">
+                        <div class="fact"><span class="fact-label">FOCUS</span><p>Building modern, responsive and secure web experiences from the ground up.</p></div>
+                        <div class="fact"><span class="fact-label">MISSION</span><p>To grow as a developer and cyber security enthusiast, turning ideas into clean, working code.</p></div>
+                        <div class="fact"><span class="fact-label">HOBBIES</span><p>Exploring new technology, reading about security, and experimenting with design.</p></div>
+                        <div class="fact"><span class="fact-label">GOAL</span><p>Build a career combining software development, security and creative problem-solving.</p></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== -->
-    <!-- PROJECTS -->
-    <!-- ==================== -->
-    <section id="projects" class="section projects">
-        <div class="content">
-            <p class="section-tag">// work.log</p>
-            <h2>PROJECTS</h2>
+        <!-- ==================== -->
+        <!-- PAGE: SKILLS -->
+        <!-- ==================== -->
+        <section id="view-skills" class="view">
+            <div class="page-head">
+                <span class="page-no">03</span>
+                <h2>SKILLS</h2>
+            </div>
+            <div class="skills-wrap">
+                <div class="skill">
+                    <div class="skill-head"><span>HTML</span><em>95%</em></div>
+                    <div class="bar"><span data-width="95%"></span></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-head"><span>CSS</span><em>85%</em></div>
+                    <div class="bar"><span data-width="85%"></span></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-head"><span>JavaScript</span><em>80%</em></div>
+                    <div class="bar"><span data-width="80%"></span></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-head"><span>Cyber Security</span><em>75%</em></div>
+                    <div class="bar"><span data-width="75%"></span></div>
+                </div>
+            </div>
+            <div class="media-row">
+                <div class="graphic-square">
+                    <video autoplay muted loop>
+                        <source src="VID1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="graphic-square">
+                    <video autoplay muted loop>
+                        <source src="VID2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="graphic-square">
+                    <video autoplay muted loop>
+                        <source src="VID3.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
 
+        <!-- ==================== -->
+        <!-- PAGE: PROJECTS -->
+        <!-- ==================== -->
+        <section id="view-projects" class="view">
+            <div class="page-head">
+                <span class="page-no">04</span>
+                <h2>PROJECTS</h2>
+            </div>
             <div class="projects-grid">
-                <article class="card reveal">
+                <article class="card">
+                    <div class="card-img graphic"></div>
                     <span class="card-no">PROJECT_01</span>
                     <h3>Portfolio Website</h3>
                     <p>A responsive portfolio presentation with modern design and animations.</p>
                 </article>
-
-                <article class="card reveal">
+                <article class="card">
+                    <div class="card-img graphic"></div>
                     <span class="card-no">PROJECT_02</span>
                     <h3>Management Webpage</h3>
                     <p>A responsive management webpage with forms and tables.</p>
                 </article>
-
-                <article class="card reveal">
+                <article class="card">
+                    <div class="card-img graphic"></div>
                     <span class="card-no">PROJECT_03</span>
-                    <h3>Coming Soon</h3>
-                    <p>New cyber security and development projects in progress.</p>
+                    <h3>Cyber Lab Series</h3>
+                    <p>Hands-on experiments across security and web tooling.</p>
                 </article>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== -->
-    <!-- TEAM / CREW -->
-    <!-- ==================== -->
-    <section id="team" class="section team">
-        <div class="content">
-            <p class="section-tag">// squad</p>
-            <h2>CREW</h2>
-
+        <!-- ==================== -->
+        <!-- PAGE: CREW -->
+        <!-- ==================== -->
+        <section id="view-team" class="view">
+            <div class="page-head">
+                <span class="page-no">05</span>
+                <h2>CREW</h2>
+            </div>
             <div class="team-grid">
-                <div class="member reveal">
+                <div class="member">
                     <div class="avatar">E</div>
                     <h3>Epiphany</h3>
                     <p>Developer</p>
                 </div>
-                <div class="member reveal">
+                <div class="member">
                     <div class="avatar">T</div>
                     <h3>Team Member</h3>
                     <p>Designer</p>
                 </div>
-                <div class="member reveal">
+                <div class="member">
                     <div class="avatar">+</div>
                     <h3>You?</h3>
                     <p>Join the crew</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== -->
-    <!-- CONTACT -->
-    <!-- ==================== -->
-    <section id="contact" class="section contact">
-        <div class="content reveal">
-            <p class="section-tag">// ping.me</p>
-            <h2>CONTACT</h2>
-            <p>Have a project idea or just want to say hello? Get in touch.</p>
-
-            <div class="contact-row">
-                <div class="contact-item">
-                    <h3>EMAIL</h3>
-                    <p><a href="mailto:epiphanynestory@icloud.com">epiphanynestory@icloud.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <h3>PHONE</h3>
-                    <p><a href="tel:0797404855">0797 404 855</a></p>
+        <!-- ==================== -->
+        <!-- PAGE: CONTACT -->
+        <!-- ==================== -->
+        <section id="view-contact" class="view">
+            <div class="page-head">
+                <span class="page-no">06</span>
+                <h2>CONTACT</h2>
+            </div>
+            <div class="split">
+                <div class="split-media graphic"></div>
+                <div class="split-text">
+                    <p class="kicker">// ping.me</p>
+                    <h3>Let's build together</h3>
+                    <p>Have a project idea or just want to say hello? Get in touch.</p>
+                    <div class="line"></div>
+                    <div class="contact-row">
+                        <div class="contact-item">
+                            <h3>EMAIL</h3>
+                            <p><a href="mailto:epiphanynestory@icloud.com">epiphanynestory@icloud.com</a></p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>PHONE</h3>
+                            <p><a href="tel:0797404855">0797 404 855</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ==================== -->
-    <!-- THANK YOU -->
-    <!-- ==================== -->
-    <section class="thankyou">
-        <h1>THANK YOU</h1>
-        <p>Cyber Portfolio Presentation</p>
-        <p>&copy; <span id="year">2026</span> Epiphany Nestory</p>
-    </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
