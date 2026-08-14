@@ -145,3 +145,40 @@ if (dalaliCard && previewModal) {
         }
     });
 }
+
+// ========== JOIN CREW MODAL ==========
+const joinCard = document.getElementById('joinCard');
+const joinModal = document.getElementById('joinModal');
+const joinClose = document.getElementById('joinClose');
+const joinForm = document.getElementById('joinForm');
+const joinMsg = document.getElementById('joinMsg');
+
+function openJoin() {
+    joinMsg.textContent = '';
+    joinModal.classList.add('open');
+}
+
+function closeJoin() {
+    joinModal.classList.remove('open');
+}
+
+if (joinCard && joinModal) {
+    joinCard.addEventListener('click', openJoin);
+    joinClose.addEventListener('click', closeJoin);
+    joinModal.addEventListener('click', (e) => {
+        if (e.target === joinModal) closeJoin();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeJoin();
+    });
+
+    if (joinForm) {
+        joinForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('joinName').value;
+            const email = document.getElementById('joinEmail').value;
+            joinMsg.textContent = 'Request sent, ' + name + '! The crew will contact you at ' + email + '.';
+            joinForm.reset();
+        });
+    }
+}

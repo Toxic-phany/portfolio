@@ -850,3 +850,135 @@ img {
     border: none;
     display: block;
 }
+
+/* ============ JOIN CREW ============ */
+#joinCard {
+    cursor: pointer;
+}
+
+.join-btn {
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    background: none;
+    border: 1px solid var(--neon);
+    color: var(--neon);
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.join-btn:hover {
+    background: var(--neon);
+    color: var(--bg);
+    box-shadow: 0 0 16px var(--neon-dim);
+}
+
+.join-box {
+    max-width: 420px;
+    height: auto;
+    padding: 38px 30px 30px;
+    overflow-y: auto;
+}
+
+.join-title {
+    color: var(--neon);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.join-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+#joinForm label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--neon-dim);
+    margin: 14px 0 6px;
+}
+
+#joinForm input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 14px;
+    outline: none;
+}
+
+#joinForm input:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 10px var(--neon-dim);
+}
+
+.join-submit {
+    margin-top: 22px;
+    width: 100%;
+    padding: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    background: var(--neon);
+    border: none;
+    color: var(--bg);
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.join-submit:hover {
+    box-shadow: 0 0 20px var(--neon-dim);
+}
+
+.join-msg {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--neon);
+    min-height: 16px;
+}
+
+/* ============ ADDRESS BOX ============ */
+.address-box {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 20px;
+}
+
+.address-box h4 {
+    color: var(--neon);
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+}
+
+.address-box p {
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.address-box .address-icon {
+    font-size: 40px;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 10px var(--neon-dim));
+}
+
+.address-box .address-loc {
+    color: var(--neon);
+    font-family: var(--mono);
+    letter-spacing: 1px;
+    margin-top: 6px;
+}

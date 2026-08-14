@@ -214,12 +214,14 @@
                         <p>A dark hacker-themed webpage about the types of hackers, built with pure HTML and CSS.</p>
                     </article>
                 </a>
-                <a class="card-link" href="https://incomparable-alfajores-c2f093.netlify.app" target="_blank">
+                <a class="card-link" href="file:///C:/Users/E3A-66/Desktop/Epiphany/Java%20work/Javascript.html" target="_blank">
                     <article class="card">
-                        <div class="card-img graphic"></div>
+                        <div class="card-img">
+                            <img src="java-work-preview.png" alt="Java work JavaScript page">
+                        </div>
                         <span class="card-no">PROJECT_02</span>
-                        <h3>Dalali</h3>
-                        <p>A real estate marketplace to buy, sell or rent houses, land and apartments in Arusha, with multi-language support.</p>
+                        <h3>Java Work</h3>
+                        <p>An interactive JavaScript lesson page: greetings, show/hide, text changing and a counter — with tips for every example.</p>
                     </article>
                 </a>
                 <article class="card" id="dalaliCard">
@@ -262,13 +264,38 @@
                     <h3>Team Member</h3>
                     <p>Designer</p>
                 </div>
-                <div class="member">
+                <div class="member" id="joinCard">
                     <div class="avatar">+</div>
                     <h3>You?</h3>
                     <p>Join the crew</p>
+                    <button class="join-btn">REQUEST ACCESS</button>
                 </div>
             </div>
         </section>
+
+        <!-- ==================== -->
+        <!-- JOIN CREW MODAL -->
+        <!-- ==================== -->
+        <div id="joinModal" class="modal">
+            <div class="modal-box join-box">
+                <button class="modal-close" id="joinClose">&times;</button>
+                <h3 class="join-title">// join.the.crew</h3>
+                <p class="join-sub">Leave your details and Epiphany will review your request.</p>
+                <form id="joinForm">
+                    <label for="joinName">NAME</label>
+                    <input type="text" id="joinName" required>
+
+                    <label for="joinEmail">EMAIL</label>
+                    <input type="email" id="joinEmail" required>
+
+                    <label for="joinSkill">SKILL / ROLE</label>
+                    <input type="text" id="joinSkill" placeholder="e.g. Developer, Designer, Security">
+
+                    <button type="submit" class="join-submit">SEND REQUEST</button>
+                </form>
+                <p id="joinMsg" class="join-msg"></p>
+            </div>
+        </div>
 
         <!-- ==================== -->
         <!-- PAGE: CONTACT -->
@@ -279,7 +306,15 @@
                 <h2>CONTACT</h2>
             </div>
             <div class="split">
-                <div class="split-media graphic"></div>
+                <div class="split-media">
+                    <div class="address-box">
+                        <span class="address-icon">&#128205;</span>
+                        <h4>FIND ME</h4>
+                        <p>House No. 236</p>
+                        <p>Arusha, Tanzania</p>
+                        <p class="address-loc">Sakina, Arusha</p>
+                    </div>
+                </div>
                 <div class="split-text">
                     <p class="kicker">// ping.me</p>
                     <h3>Let's build together</h3>
