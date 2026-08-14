@@ -204,26 +204,44 @@
                 <h2>PROJECTS</h2>
             </div>
             <div class="projects-grid">
-                <article class="card">
-                    <div class="card-img graphic"></div>
-                    <span class="card-no">PROJECT_01</span>
-                    <h3>Portfolio Website</h3>
-                    <p>A responsive portfolio presentation with modern design and animations.</p>
-                </article>
-                <article class="card">
-                    <div class="card-img graphic"></div>
-                    <span class="card-no">PROJECT_02</span>
-                    <h3>Management Webpage</h3>
-                    <p>A responsive management webpage with forms and tables.</p>
-                </article>
-                <article class="card">
-                    <div class="card-img graphic"></div>
+                <a class="card-link" href="file:///C:/Users/E3A-66/Documents/GitHub/learning%20html/index.html" target="_blank">
+                    <article class="card">
+                        <div class="card-img">
+                            <img src="learning-web.webp" alt="Learning HTML Hacking page">
+                        </div>
+                        <span class="card-no">PROJECT_01</span>
+                        <h3>Learning HTML</h3>
+                        <p>A dark hacker-themed webpage about the types of hackers, built with pure HTML and CSS.</p>
+                    </article>
+                </a>
+                <a class="card-link" href="https://incomparable-alfajores-c2f093.netlify.app" target="_blank">
+                    <article class="card">
+                        <div class="card-img graphic"></div>
+                        <span class="card-no">PROJECT_02</span>
+                        <h3>Dalali</h3>
+                        <p>A real estate marketplace to buy, sell or rent houses, land and apartments in Arusha, with multi-language support.</p>
+                    </article>
+                </a>
+                <article class="card" id="dalaliCard">
+                    <div class="card-img">
+                        <img src="dalali-preview.png" alt="Dalali homepage preview">
+                    </div>
                     <span class="card-no">PROJECT_03</span>
-                    <h3>Cyber Lab Series</h3>
-                    <p>Hands-on experiments across security and web tooling.</p>
+                    <h3>Dalali — Live Preview</h3>
+                    <p>Open the real estate marketplace embedded right here in this portfolio.</p>
                 </article>
             </div>
         </section>
+
+        <!-- ==================== -->
+        <!-- DALALI PREVIEW MODAL -->
+        <!-- ==================== -->
+        <div id="previewModal" class="modal">
+            <div class="modal-box">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <iframe id="previewFrame" src="https://incomparable-alfajores-c2f093.netlify.app" title="Dalali preview"></iframe>
+            </div>
+        </div>
 
         <!-- ==================== -->
         <!-- PAGE: CREW -->

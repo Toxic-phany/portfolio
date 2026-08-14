@@ -121,3 +121,27 @@ function animateReveals() {
 // ========== YEAR ==========
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ========== DALALI PREVIEW MODAL ==========
+const dalaliCard = document.getElementById('dalaliCard');
+const previewModal = document.getElementById('previewModal');
+const modalClose = document.getElementById('modalClose');
+
+if (dalaliCard && previewModal) {
+    dalaliCard.addEventListener('click', () => {
+        previewModal.classList.add('open');
+    });
+    modalClose.addEventListener('click', () => {
+        previewModal.classList.remove('open');
+    });
+    previewModal.addEventListener('click', (e) => {
+        if (e.target === previewModal) {
+            previewModal.classList.remove('open');
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            previewModal.classList.remove('open');
+        }
+    });
+}
