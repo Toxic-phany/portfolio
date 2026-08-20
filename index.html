@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>Cyber Portfolio | Epiphany</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Share+Tech+Mono&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -14,88 +14,53 @@
 <body>
 
     <!-- ==================== -->
-    <!-- LOADING SCREEN -->
-    <!-- ==================== -->
-    <div id="loader">
-        <div class="terminal">
-            <p class="term-title">root@Phany:~$</p>
-            <p id="typing"></p>
-            <div class="loading-bar">
-                <div class="progress"></div>
-            </div>
-            <p class="term-foot">Loading Cyber Portfolio...</p>
-        </div>
-    </div>
-
-    <!-- ==================== -->
-    <!-- TOPBAR -->
+    <!-- TOPBAR / NAV -->
     <!-- ==================== -->
     <header class="topbar">
-        <button class="back-btn" id="backBtn">&#8592; MENU</button>
         <a href="#home" class="logo">root@Phany<span>~$</span></a>
-        <span class="crumb" id="crumb"></span>
+        <nav class="main-nav" id="mainNav">
+            <a href="#home" class="active">Home</a>
+            <a href="#welcome">Welcome</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" aria-label="Change theme" title="Change theme">
+            <span class="swatch"></span>
+        </button>
+        <div class="theme-panel" id="themePanel">
+            <p class="theme-title">// pick.theme</p>
+            <button class="theme-opt" data-theme-name="cyber"><span class="dot" style="background: linear-gradient(135deg, #7c5cff, #22d3ee, #f472b6)"></span>Cyber</button>
+            <button class="theme-opt" data-theme-name="matrix"><span class="dot" style="background: linear-gradient(135deg, #00ff9c, #00e5a0, #34d399)"></span>Matrix</button>
+            <button class="theme-opt" data-theme-name="sunset"><span class="dot" style="background: linear-gradient(135deg, #ff6b35, #ffb347, #ff4d8d)"></span>Sunset</button>
+            <button class="theme-opt" data-theme-name="ocean"><span class="dot" style="background: linear-gradient(135deg, #4f9cf9, #38bdf8, #a78bfa)"></span>Ocean</button>
+            <button class="theme-opt" data-theme-name="light"><span class="dot" style="background: linear-gradient(135deg, #6d28d9, #0891b2, #db2777)"></span>Light</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle">&#9776;</button>
     </header>
 
     <main class="app">
 
         <!-- ==================== -->
-        <!-- HUB: HOME / MENU GRID -->
+        <!-- HERO -->
         <!-- ==================== -->
-        <section id="view-home" class="view active">
+        <section id="home" class="hero">
             <div class="hub">
                 <div class="hub-head">
-                    <p class="kicker">// access.granted</p>
                     <h1 class="hub-title">PORTFOLIO</h1>
-                    <p class="hub-sub">Select a module to enter</p>
-                </div>
-
-                <div class="menu-grid">
-                    <button class="tile" data-view="view-welcome" style="--i:1">
-                        <span class="tile-no">01</span>
-                        <span class="tile-ico">&#128075;</span>
-                        <h3>WELCOME</h3>
-                        <p>Introduction &amp; details</p>
-                    </button>
-                    <button class="tile" data-view="view-about" style="--i:2">
-                        <span class="tile-no">02</span>
-                        <span class="tile-ico">&#128100;</span>
-                        <h3>ABOUT</h3>
-                        <p>Who I am &amp; my story</p>
-                    </button>
-                    <button class="tile" data-view="view-skills" style="--i:3">
-                        <span class="tile-no">03</span>
-                        <span class="tile-ico">&#9881;</span>
-                        <h3>SKILLS</h3>
-                        <p>My capabilities</p>
-                    </button>
-                    <button class="tile" data-view="view-projects" style="--i:4">
-                        <span class="tile-no">04</span>
-                        <span class="tile-ico">&#128187;</span>
-                        <h3>PROJECTS</h3>
-                        <p>Work &amp; experiments</p>
-                    </button>
-                    <button class="tile" data-view="view-team" style="--i:5">
-                        <span class="tile-no">05</span>
-                        <span class="tile-ico">&#129309;</span>
-                        <h3>CREW</h3>
-                        <p>The team around me</p>
-                    </button>
-                    <button class="tile" data-view="view-contact" style="--i:6">
-                        <span class="tile-no">06</span>
-                        <span class="tile-ico">&#9993;</span>
-                        <h3>CONTACT</h3>
-                        <p>Reach out to me</p>
-                    </button>
+                    <p class="hub-sub">Welcome to my Cyber Portfolio Presentation</p>
                 </div>
             </div>
         </section>
 
+        <div class="sections-grid">
+
         <!-- ==================== -->
-        <!-- PAGE: WELCOME -->
+        <!-- WELCOME -->
         <!-- ==================== -->
-        <section id="view-welcome" class="view">
+        <section id="welcome" class="view reveal">
             <div class="page-head">
-                <span class="page-no">01</span>
                 <h2>WELCOME</h2>
             </div>
             <div class="split">
@@ -118,11 +83,10 @@
         </section>
 
         <!-- ==================== -->
-        <!-- PAGE: ABOUT -->
+        <!-- ABOUT -->
         <!-- ==================== -->
-        <section id="view-about" class="view">
+        <section id="about" class="view reveal">
             <div class="page-head">
-                <span class="page-no">02</span>
                 <h2>ABOUT</h2>
             </div>
             <div class="split reverse">
@@ -135,9 +99,9 @@
                     <p>My name is <strong>Epiphany</strong>. I am passionate about Web Development, Cyber Security and Technology. I enjoy building modern websites using HTML, CSS and JavaScript.</p>
                     <div class="line"></div>
                     <div class="about-stats">
-                        <div class="stat"><h3>95</h3><p>PASSION</p></div>
-                        <div class="stat"><h3>85</h3><p>CREATIVITY</p></div>
-                        <div class="stat"><h3>90</h3><p>COMMITMENT</p></div>
+                        <div class="stat"><h3 data-count="95">0</h3><p>PASSION</p></div>
+                        <div class="stat"><h3 data-count="85">0</h3><p>CREATIVITY</p></div>
+                        <div class="stat"><h3 data-count="90">0</h3><p>COMMITMENT</p></div>
                     </div>
                     <div class="line"></div>
                     <div class="facts">
@@ -151,11 +115,10 @@
         </section>
 
         <!-- ==================== -->
-        <!-- PAGE: SKILLS -->
+        <!-- SKILLS -->
         <!-- ==================== -->
-        <section id="view-skills" class="view">
+        <section id="skills" class="view reveal">
             <div class="page-head">
-                <span class="page-no">03</span>
                 <h2>SKILLS</h2>
             </div>
             <div class="skills-wrap">
@@ -196,11 +159,10 @@
         </section>
 
         <!-- ==================== -->
-        <!-- PAGE: PROJECTS -->
+        <!-- PROJECTS -->
         <!-- ==================== -->
-        <section id="view-projects" class="view">
+        <section id="projects" class="view reveal">
             <div class="page-head">
-                <span class="page-no">04</span>
                 <h2>PROJECTS</h2>
             </div>
             <div class="projects-grid">
@@ -236,6 +198,32 @@
         </section>
 
         <!-- ==================== -->
+        <!-- STATUS -->
+        <!-- ==================== -->
+        <section id="status" class="view reveal">
+            <div class="page-head">
+                <h2>STATUS</h2>
+            </div>
+            <div class="term-card">
+                <div class="term-bar">
+                    <span class="dot dot-r"></span>
+                    <span class="dot dot-y"></span>
+                    <span class="dot dot-g"></span>
+                    <span>epiphany@portfolio: ~</span>
+                </div>
+                <div class="term-body">
+                    <p><span class="c1">$</span> uptime</p>
+                    <p><span class="c2">status:</span> <span class="ok">[ online ]</span></p>
+                    <p><span class="c2">role:</span> Student Developer</p>
+                    <p><span class="c2">learning:</span> Web Development</p>
+                    <p><span class="c2">building:</span> Dalali, portfolio</p>
+                    <p><span class="c2">location:</span> Arusha, Tanzania</p>
+                    <p><span class="c1">$</span> <span class="cursor-blink">&#9610;</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== -->
         <!-- DALALI PREVIEW MODAL -->
         <!-- ==================== -->
         <div id="previewModal" class="modal">
@@ -246,63 +234,10 @@
         </div>
 
         <!-- ==================== -->
-        <!-- PAGE: CREW -->
+        <!-- CONTACT -->
         <!-- ==================== -->
-        <section id="view-team" class="view">
+        <section id="contact" class="view reveal">
             <div class="page-head">
-                <span class="page-no">05</span>
-                <h2>CREW</h2>
-            </div>
-            <div class="team-grid">
-                <div class="member">
-                    <div class="avatar">E</div>
-                    <h3>Epiphany</h3>
-                    <p>Developer</p>
-                </div>
-                <div class="member">
-                    <div class="avatar">T</div>
-                    <h3>Team Member</h3>
-                    <p>Designer</p>
-                </div>
-                <div class="member" id="joinCard">
-                    <div class="avatar">+</div>
-                    <h3>You?</h3>
-                    <p>Join the crew</p>
-                    <button class="join-btn">REQUEST ACCESS</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== -->
-        <!-- JOIN CREW MODAL -->
-        <!-- ==================== -->
-        <div id="joinModal" class="modal">
-            <div class="modal-box join-box">
-                <button class="modal-close" id="joinClose">&times;</button>
-                <h3 class="join-title">// join.the.crew</h3>
-                <p class="join-sub">Leave your details and Epiphany will review your request.</p>
-                <form id="joinForm">
-                    <label for="joinName">NAME</label>
-                    <input type="text" id="joinName" required>
-
-                    <label for="joinEmail">EMAIL</label>
-                    <input type="email" id="joinEmail" required>
-
-                    <label for="joinSkill">SKILL / ROLE</label>
-                    <input type="text" id="joinSkill" placeholder="e.g. Developer, Designer, Security">
-
-                    <button type="submit" class="join-submit">SEND REQUEST</button>
-                </form>
-                <p id="joinMsg" class="join-msg"></p>
-            </div>
-        </div>
-
-        <!-- ==================== -->
-        <!-- PAGE: CONTACT -->
-        <!-- ==================== -->
-        <section id="view-contact" class="view">
-            <div class="page-head">
-                <span class="page-no">06</span>
                 <h2>CONTACT</h2>
             </div>
             <div class="split">
@@ -323,18 +258,26 @@
                     <div class="contact-row">
                         <div class="contact-item">
                             <h3>EMAIL</h3>
-                            <p><a href="mailto:epiphanynestory@icloud.com">epiphanynestory@icloud.com</a></p>
+                            <p><a href="mailto:epiphanynestory@icloud.com?subject=Portfolio%20Message" title="Send an email">epiphanynestory@icloud.com</a></p>
                         </div>
                         <div class="contact-item">
-                            <h3>PHONE</h3>
-                            <p><a href="tel:0797404855">0797 404 855</a></p>
+                            <h3>WHATSAPP</h3>
+                            <p><a href="https://wa.me/255797404855" target="_blank" rel="noopener" title="Chat on WhatsApp">0797 404 855</a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        </div>
+
     </main>
+
+    <footer class="thankyou">
+        <h1>THANK YOU</h1>
+        <p>Cyber Portfolio Presentation</p>
+        <p>&copy; <span id="year">2026</span> Epiphany Nestory</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

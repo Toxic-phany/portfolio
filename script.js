@@ -1,126 +1,119 @@
-// ========== LOADER: typing + progress ==========
-const loader = document.getElementById('loader');
-const typingEl = document.getElementById('typing');
-const progressEl = document.querySelector('#loader .progress');
+// ========== THEME SWITCHER ==========
+const themeToggle = document.getElementById('themeToggle');
+const themePanel = document.getElementById('themePanel');
+const themeOpts = document.querySelectorAll('.theme-opt');
 
-const bootLines = [
-    '> Initializing system...',
-    '> Loading modules ............ OK',
-    '> Establishing secure link ... OK',
-    '> Rendering interface ........ OK',
-    '> Access granted. Welcome, Epiphany.'
-];
-
-const totalChars = bootLines.join('').length;
-let line = 0;
-let char = 0;
-let typed = 0;
-
-function updateProgress() {
-    if (!progressEl) return;
-    const pct = Math.min(100, Math.round((typed / totalChars) * 100));
-    progressEl.style.width = pct + '%';
+function applyTheme(name) {
+    document.documentElement.setAttribute('data-theme', name);
+    localStorage.setItem('phany-theme', name);
+    themeOpts.forEach(o => o.classList.toggle('active', o.dataset.themeName === name));
 }
 
-function typeLine() {
-    if (line >= bootLines.length) {
-        updateProgress();
-        finishBoot();
-        return;
-    }
-    const current = bootLines[line];
-    if (char <= current.length) {
-        typingEl.textContent = current.slice(0, char);
-        char++;
-        typed++;
-        updateProgress();
-        setTimeout(typeLine, 28);
-    } else {
-        char = 0;
-        line++;
-        setTimeout(typeLine, 260);
-    }
-}
-
-function finishBoot() {
-    setTimeout(() => {
-        loader.classList.add('done');
-        document.body.classList.add('loaded');
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 700);
-    }, 350);
-}
-
-window.addEventListener('load', () => {
-    setTimeout(typeLine, 400);
-    setTimeout(finishBoot, 4500);
-});
-
-// ========== VIEW NAVIGATION ==========
-const views = document.querySelectorAll('.view');
-const tiles = document.querySelectorAll('.tile');
-const backBtn = document.getElementById('backBtn');
-const crumb = document.getElementById('crumb');
-
-function showView(id) {
-    views.forEach(v => v.classList.remove('active'));
-    const target = document.getElementById(id);
-    if (target) {
-        target.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    if (backBtn) backBtn.classList.add('show');
-    if (crumb) {
-        crumb.textContent = id.replace('view-', '').toUpperCase() + ' MODULE';
-    }
-    if (id === 'view-home') {
-        if (backBtn) backBtn.classList.remove('show');
-        if (crumb) crumb.textContent = '';
-    }
-    animateBars();
-    animateReveals();
-}
-
-tiles.forEach(tile => {
-    tile.addEventListener('click', () => {
-        const target = tile.getAttribute('data-view');
-        if (target) showView(target);
+if (themeToggle && themePanel) {
+    themeToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themePanel.classList.toggle('open');
     });
-});
 
-if (backBtn) {
-    backBtn.addEventListener('click', () => showView('view-home'));
-}
+    themeOpts.forEach(o => o.addEventListener('click', () => {
+        applyTheme(o.dataset.themeName);
+        themePanel.classList.remove('open');
+    }));
 
-// ========== SKILL BARS ==========
-function animateBars() {
-    const bars = document.querySelectorAll('.view.active .bar span');
-    bars.forEach(bar => {
-        const width = bar.getAttribute('data-width') || '0';
-        requestAnimationFrame(() => {
-            bar.style.width = width;
-        });
+    document.addEventListener('click', (e) => {
+        if (!themePanel.contains(e.target) && !themeToggle.contains(e.target)) {
+            themePanel.classList.remove('open');
+        }
     });
 }
 
-// ========== REVEAL ==========
-function animateReveals() {
-    const els = document.querySelectorAll('.view.active .card, .view.active .member, .view.active .box');
-    els.forEach((el, i) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            el.style.transition = 'opacity .5s ease, transform .5s ease';
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-        }, 100 + i * 80);
+const savedTheme = localStorage.getItem('phany-theme');
+if (savedTheme) applyTheme(savedTheme);
+
+// ========== MOBILE MENU ==========
+const menuToggle = document.getElementById('menuToggle');
+const nav = document.getElementById('mainNav');
+
+if (menuToggle && nav) {
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+    });
+    nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => nav.classList.remove('open'));
     });
 }
 
-// ========== YEAR ==========
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+// ========== SCROLLSPY: highlight active menu item ==========
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('#mainNav a');
+
+function setActive() {
+    const pos = window.scrollY + 140;
+    let current = 'home';
+    sections.forEach(sec => {
+        if (pos >= sec.offsetTop) current = sec.id;
+    });
+    navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+}
+
+window.addEventListener('scroll', setActive, { passive: true });
+window.addEventListener('resize', setActive);
+setActive();
+
+// ========== SKILL BARS: animate when visible ==========
+const skillBars = document.querySelectorAll('.bar span');
+
+const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const width = entry.target.getAttribute('data-width') || '0';
+            entry.target.style.width = width;
+            barObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.4 });
+
+skillBars.forEach(bar => barObserver.observe(bar));
+
+// ========== ABOUT STATS: count up when visible ==========
+const statEls = document.querySelectorAll('.stat h3');
+
+const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-count'), 10) || 0;
+            let current = 0;
+            const step = Math.max(1, Math.round(target / 60));
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                entry.target.textContent = current;
+            }, 16);
+            countObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+statEls.forEach(el => countObserver.observe(el));
+
+// ========== SCROLL REVEAL ==========
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+revealEls.forEach(el => revealObserver.observe(el));
 
 // ========== DALALI PREVIEW MODAL ==========
 const dalaliCard = document.getElementById('dalaliCard');
@@ -146,39 +139,6 @@ if (dalaliCard && previewModal) {
     });
 }
 
-// ========== JOIN CREW MODAL ==========
-const joinCard = document.getElementById('joinCard');
-const joinModal = document.getElementById('joinModal');
-const joinClose = document.getElementById('joinClose');
-const joinForm = document.getElementById('joinForm');
-const joinMsg = document.getElementById('joinMsg');
-
-function openJoin() {
-    joinMsg.textContent = '';
-    joinModal.classList.add('open');
-}
-
-function closeJoin() {
-    joinModal.classList.remove('open');
-}
-
-if (joinCard && joinModal) {
-    joinCard.addEventListener('click', openJoin);
-    joinClose.addEventListener('click', closeJoin);
-    joinModal.addEventListener('click', (e) => {
-        if (e.target === joinModal) closeJoin();
-    });
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeJoin();
-    });
-
-    if (joinForm) {
-        joinForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('joinName').value;
-            const email = document.getElementById('joinEmail').value;
-            joinMsg.textContent = 'Request sent, ' + name + '! The crew will contact you at ' + email + '.';
-            joinForm.reset();
-        });
-    }
-}
+// ========== YEAR ==========
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
