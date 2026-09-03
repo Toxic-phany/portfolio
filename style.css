@@ -805,6 +805,58 @@ img, video { display: block; max-width: 100%; }
 
 @keyframes blink { 50% { opacity: 0; } }
 
+/* ==================== CV ==================== */
+
+.cv-box {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 56px 40px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    text-align: center;
+}
+
+.cv-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cv-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(92deg, var(--violet), #5b8cff);
+    box-shadow: 0 8px 30px rgba(124, 92, 255, .35);
+    transition: all .25s;
+}
+
+.cv-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 44px rgba(124, 92, 255, .55);
+}
+
+.cv-btn-alt {
+    background: transparent;
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+.cv-btn-alt:hover {
+    border-color: var(--violet);
+    background: rgba(124, 92, 255, .1);
+}
+
 /* ==================== CONTACT ==================== */
 
 .address-box {
@@ -931,6 +983,7 @@ img, video { display: block; max-width: 100%; }
             "about"
             "skills"
             "projects"
+            "cv"
             "status"
             "contact";
     }
